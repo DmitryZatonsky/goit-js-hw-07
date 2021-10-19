@@ -1,18 +1,26 @@
 const inputRef = document.querySelector('#validation-input');
 const length = inputRef.getAttribute('data-length');
 
+
 function onConditionCheck(event) {
   
-  if (event.currentTarget.value.length == length) {
-    
-    inputRef.classList.add('valid');
-    inputRef.classList.remove('invalid');
-
-  } else {
-
-    inputRef.classList.add('invalid');
-    inputRef.classList.remove('valid');
+  event.currentTarget.value.length === Number(length)
+    ? toggleClass(inputRef, 'valid', 'invalid')
+    : toggleClass(inputRef, 'invalid', 'valid')
   };
+
+function toggleClass(reference, add, del) {
+  reference.classList.add(add);
+  reference.classList.remove(del);
 };
    
 inputRef.addEventListener('blur', onConditionCheck);
+
+// function onConditionCheck(event) {
+  
+//   if (event.currentTarget.value.length === Number(length)) {
+//     toggleClass(inputRef, 'valid', 'invalid')
+//   } else {
+//     toggleClass(inputRef, 'invalid', 'valid')
+//   };
+// };
